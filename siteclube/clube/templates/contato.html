@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato - ASSGA</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>Fale Conosco</h1>
+{% if sucesso %}
+    <p style="color:green;">Mensagem enviada com sucesso!</p>
+{% endif %}
+
+<section class="conteudo">
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="card">
+            <label>Nome:</label><br>
+            <input type="text" name="nome" required>
+        </div>
+
+        <div class="card">
+            <label>Email:</label><br>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="card">
+            <label>Mensagem:</label><br>
+            <textarea name="mensagem" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-entrar">Enviar</button>
+    </form>
+
+</section>
+
+<a href="{% url 'home' %}">⬅ Voltar para Home</a>
+
+</body>
+</html>

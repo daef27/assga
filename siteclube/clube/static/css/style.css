@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #e6f0fa; /* Azul claro de fundo */
+    color: #0b1f3a;
+}
+
+/* HEADER */
+.topo {
+    background: linear-gradient(90deg, #0b1f3a, #1565c0); /* Azul escuro -> azul médio */
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    border-bottom: 3px solid #1e88e5;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-area img {
+    height: 90px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.cnpj {
+    color: #bbdefb;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    background: #1e88e5;
+    color: #fff;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown a {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background-color: #0d47a1; /* Azul mais escuro */
+    min-width: 160px;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    color: #bbdefb;
+}
+
+.dropdown-content a:hover {
+    background: #1e88e5;
+    color: white;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown-content.active {
+    display: block;
+}
+
+/* BOTÃO ENTRAR */
+.btn-entrar {
+    background: #1e88e5;
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: white !important;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-entrar:hover {
+    background: #1565c0;
+}
+
+/* CONTEÚDO */
+.conteudo {
+    padding: 50px;
+    background: #f4f9ff; /* Fundo suave */
+}
+
+.titulo-secao {
+    margin-bottom: 25px;
+    color: #0d47a1;
+    font-size: 28px;
+    font-weight: 700;
+    border-bottom: 3px solid #1e88e5;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* CARD NOTÍCIAS */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* STATUS PAGAMENTO */
+.pago {
+    color: #00c853;
+    font-weight: bold;
+}
+
+.atrasado {
+    color: #d50000;
+    font-weight: bold;
+}
+
+/* TABELA PAGAMENTOS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+table th {
+    background: #1e88e5;
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* RESPONSIVO MENU MOBILE */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 90px;
+        right: 20px;
+        background: #0d47a1;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Diretoria - ASSGA</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>Diretoria da ASSGA</h1>
+
+<section class="conteudo">
+
+    <div class="card">
+        <img src="{% static 'img/diretoria/presidente.jpg' %}" class="foto-diretoria">
+        <h3>Presidente</h3>
+        <p>Nome do Presidente</p>
+    </div>
+
+
+    <div class="card">
+        <h3>Vice-Presidente</h3>
+        <p>Nome do Vice</p>
+    </div>
+
+    <div class="card">
+        <h3>Secretário</h3>
+        <p>Nome do Secretário</p>
+    </div>
+
+    <div class="card">
+        <h3>Tesoureiro</h3>
+        <p>Nome do Tesoureiro</p>
+    </div>
+
+</section>
+
+<a href="{% url 'home' %}">⬅ Voltar para Home</a>
+
+</body>
+</html>

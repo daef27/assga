@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Estatuto - ASSGA</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>Estatuto da ASSGA</h1>
+
+<section class="conteudo">
+
+    <div class="card">
+        <h3>Capítulo I - Da Fundação</h3>
+        <p>A ASSGA foi fundada com o objetivo de promover...</p>
+    </div>
+
+    <div class="card">
+        <h3>Capítulo II - Dos Sócios</h3>
+        <p>Os sócios terão direitos e deveres conforme...</p>
+    </div>
+
+    <div class="card">
+        <h3>Capítulo III - Da Diretoria</h3>
+        <p>A diretoria será composta por...</p>
+    </div>
+
+</section>
+
+<a href="{% url 'home' %}">⬅ Voltar para Home</a>
+
+<a href="{% static 'pdf/estatuto.pdf' %}" class="btn-entrar" download>
+    📄 Baixar Estatuto em PDF
+</a>
+
+
+</body>
+</html>
