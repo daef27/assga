@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Login Cliente</title>
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<h1>Login Cliente</h1>
+
+<div class="login-box">
+  <input type="text" id="cpf" placeholder="CPF 000.000.000-00">
+  <input type="password" id="senha" placeholder="Senha 4 números" maxlength="4">
+  <button onclick="entrar()">Entrar</button>
+</div>
+
+<script>
+function entrar() {
+  const cpf = document.getElementById("cpf").value;
+  const senha = document.getElementById("senha").value;
+
+  const lista = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  const usuario = lista.find(u => u.cpf === cpf && u.senha === senha);
+
+  if(usuario){
+    localStorage.setItem("clienteLogado", JSON.stringify(usuario));
+    window.location.href = "carteira.html";
+  } else {
+    alert("CPF ou senha inválido!");
+  }
+}
+</script>
+
+</body>
+</html>

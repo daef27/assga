@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>ASSGA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">ASSGA</div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="historia.html">História</a></li>
+      <li><a href="#">Esportiva</a></li>
+      <li><a href="evento.html">Evento</a></li>
+      <li><a href="#">Diretoria</a></li>
+      <li><a href="#">Curso</a></li>
+
+        <li class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">
+                Login <span class="seta">▼</span>
+            </a>
+
+            <ul class="submenu">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- SLIDER COM IMAGEM -->
+<section class="slider">
+  <button class="btn-slide" onclick="prevSlide()">❮</button>
+
+  <img id="slide" src="imagens/foto1.jpg">
+
+  <button class="btn-slide" onclick="nextSlide()">❯</button>
+</section>
+
+<!-- NOTICIAS -->
+<section class="noticias">
+  <h2>Notícias</h2>
+
+  <div class="noticia-item">
+    <img src="imagens/foto1.jpg">
+    <div class="texto">Texto da notícia aqui...</div>
+  </div>
+
+  <div class="noticia-item">
+    <img src="imagens/foto2.jpg">
+    <div class="texto">Outra notícia aqui...</div>
+  </div>
+</section>
+
+<section class="info">
+  <p>Endereço:</p>
+  <p>Cep:</p>
+  <p>Cnpj:</p>
+  <p>Email:</p>
+  <p>Fone:</p>
+</section>
+
+<footer>
+  © 2026 ASSGA
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

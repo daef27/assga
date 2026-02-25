@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Admin - ASSGA</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="login-container">
+
+  <div class="login-box">
+    <h2>Área do Responsável</h2>
+
+    <form id="adminForm">
+
+      <div class="input-group">
+        <label>CPF</label>
+        <input type="text" id="adminCpf" placeholder="000.000.000-00" maxlength="14" required>
+      </div>
+
+      <div class="input-group">
+        <label>Senha</label>
+        <input type="password" id="adminSenha" required>
+      </div>
+
+      <button type="submit" class="btn-login">Entrar</button>
+
+    </form>
+
+    <p class="mensagem" id="adminMensagem"></p>
+
+  </div>
+
+</section>
+
+<script src="admin.js"></script>
+</body>
+</html>
