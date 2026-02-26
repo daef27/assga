@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Pagamentos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+<h2>Lista de Pagamentos</h2>
+
+<table class="tabela">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Situação</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody id="lista"></tbody>
+</table>
+
+<br>
+<button onclick="limparTodos()" class="btn-excluir">🗑 Limpar Todos</button>
+<button onclick="window.location='cadastro.html'" class="btn-voltar">Novo Cadastro</button>
+</div>
+
+<script src="lista.js"></script>
+
+</body>
+</html>

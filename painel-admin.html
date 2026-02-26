@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Admin</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#003366,#0059b3);
+  min-height:100vh;
+  padding:20px;
+  color:#fff;
+}
+
+/* PROTEÇÃO (antes de mostrar página) */
+.hidden{
+  display:none;
+}
+
+h1{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.form-box{
+  background:#fff;
+  color:#333;
+  max-width:500px;
+  margin:0 auto;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.form-box input,
+.form-box select{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+.form-box button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:6px;
+  background:#003366;
+  color:#fff;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.form-box button:hover{
+  background:#0059b3;
+}
+
+h2{
+  text-align:center;
+  margin:30px 0 15px;
+}
+
+#lista{
+  max-width:700px;
+  margin:0 auto;
+}
+
+.card{
+  background:#fff;
+  color:#333;
+  padding:15px;
+  margin-bottom:10px;
+  border-radius:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card img{
+  width:50px;
+  height:50px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.card button{
+  background:red;
+  color:#fff;
+  border:none;
+  padding:5px 10px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.logout{
+  text-align:center;
+  margin-top:20px;
+}
+
+.logout button{
+  background:#111;
+  padding:10px 20px;
+  border:none;
+  border-radius:6px;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* RESPONSIVO */
+@media(max-width:600px){
+  .card{
+    flex-direction:column;
+    gap:10px;
+  }
+}
+</style>
+</head>
+
+<body class="hidden">
+
+<h1>Painel do Admin</h1>
+
+<div class="form-box">
+
+  <input type="text" id="nome" placeholder="Nome Completo">
+  <input type="text" id="cpf" placeholder="CPF 000.000.000-00">
+  <input type="text" id="rg" placeholder="RG">
+  <input type="text" id="socio" placeholder="Número Sócio">
+  <input type="password" id="senha" placeholder="Senha 4 números" maxlength="4">
+
+  <label>Foto:</label>
+  <input type="file" id="foto" accept="image/*">
+
+  <label>Tipo de usuário:</label>
+  <select id="tipo">
+    <option value="cliente">Login</option>
+    <option value="admin">Admin</option>
+  </select>
+
+  <button onclick="registrar()">Registrar</button>
+
+</div>
+
+<h2>Lista de Cadastrados</h2>
+<div id="lista"></div>
+
+<div class="logout">
+  <button onclick="sair()">Sair</button>
+</div>
+
+<script>
+/* 🔐 PROTEÇÃO */
+if (localStorage.getItem("adminLogado") !== "true") {
+  window.location.replace("admin.html");
+} else {
+  document.body.classList.remove("hidden");
+}
+
+/* 📦 CARREGAR USUÁRIOS */
+let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+function salvar() {
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+}
+
+function registrar() {
+
+  const nome = document.getElementById("nome").value;
+  const cpf = document.getElementById("cpf").value;
+  const rg = document.getElementById("rg").value;
+  const socio = document.getElementById("socio").value;
+  const senha = document.getElementById("senha").value;
+  const tipo = document.getElementById("tipo").value;
+  const fotoInput = document.getElementById("foto");
+
+  if (!nome || !cpf || !senha) {
+    alert("Preencha os campos obrigatórios!");
+    return;
+  }
+
+  let fotoURL = "";
+
+  if (fotoInput.files.length > 0) {
+    fotoURL = URL.createObjectURL(fotoInput.files[0]);
+  }
+
+  const novoUsuario = {
+    nome,
+    cpf,
+    rg,
+    socio,
+    senha,
+    tipo,
+    foto: fotoURL
+  };
+
+  usuarios.push(novoUsuario);
+  salvar();
+  listar();
+
+  document.querySelectorAll(".form-box input").forEach(input => input.value = "");
+}
+
+function listar() {
+
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  usuarios.forEach((user, index) => {
+
+    lista.innerHTML += `
+      <div class="card">
+        <div>
+          <strong>${user.nome}</strong><br>
+          CPF: ${user.cpf}<br>
+          Tipo: ${user.tipo}
+        </div>
+        ${user.foto ? `<img src="${user.foto}">` : ""}
+        <button onclick="excluir(${index})">Excluir</button>
+      </div>
+    `;
+  });
+}
+
+function excluir(index) {
+  usuarios.splice(index,1);
+  salvar();
+  listar();
+}
+
+function sair() {
+  localStorage.removeItem("adminLogado");
+  window.location.replace("admin.html");
+}
+
+listar();
+</script>
+
+</body>
+</html>

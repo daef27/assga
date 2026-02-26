@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #003366, #0059b3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  background: white;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #003366;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 6px;
+  background: #003366;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0059b3;
+}
+
+footer {
+  margin-top: 20px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.erro {
+  color: red;
+  font-size: 13px;
+  margin-top: 10px;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Área Administrativa</h2>
+
+  <label>CPF</label>
+  <input type="text" id="cpf" placeholder="000.000.000-00">
+
+  <label>Senha</label>
+  <input type="password" id="senha" placeholder="Digite sua senha">
+
+  <button onclick="login()">Entrar</button>
+
+  <div class="erro" id="mensagem"></div>
+</div>
+
+<footer>
+  © 2026 - Sistema Administrativo
+</footer>
+
+<script>
+function login() {
+
+  const cpf = document.getElementById("cpf").value;
+  const senha = document.getElementById("senha").value;
+  const mensagem = document.getElementById("mensagem");
+
+  // ADMIN PADRÃO (você pode mudar)
+  const cpfAdmin = "000.000.000-00";
+  const senhaAdmin = "1234";
+
+  if (cpf === "" || senha === "") {
+    mensagem.innerText = "Preencha todos os campos!";
+    return;
+  }
+
+  if (cpf === cpfAdmin && senha === senhaAdmin) {
+
+    // salva login
+    localStorage.setItem("adminLogado", "true");
+
+    // redireciona
+    window.location.href = "painel-admin.html";
+
+  } else {
+    mensagem.innerText = "CPF ou senha inválidos!";
+  }
+}
+</script>
+
+</body>
+</html>

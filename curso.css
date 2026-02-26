@@ -1,0 +1,86 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right,#00264d,#003366);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.container {
+  width: 400px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 { font-size: 28px; margin-bottom: 5px; }
+
+/* link para PainelAdminCurso */
+.painel-link {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.painel-link a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.painel-link a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.form-card {
+  background: #001f3f;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group input,
+.input-group select {
+  width: 94%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+.input-group input::placeholder {
+  color: #999;
+}
+
+.valor-display {
+  font-size: 16px;
+  font-weight: bold;
+  color: #00ffcc;
+  text-align: center;
+}
+
+.input-group button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #00cc66;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.input-group button:hover {
+  background: #00994d;
+}

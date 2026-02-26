@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>ASSGA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">ASSGA</div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="historia.html">História</a></li>
+      <li><a href="esportiva.html">Esportiva</a></li>
+      <li><a href="evento.html">Evento</a></li>
+      <li><a href="estatuto.html">Estatuto</a></li>
+      <li><a href="diretoria.html">Diretoria</a></li>
+      <li><a href="curso.html">Curso</a></li>
+
+        <li class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">
+                Login <span class="seta">▼</span>
+            </a>
+
+            <ul class="submenu">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- SLIDER COM IMAGEM -->
+<!-- SLIDER -->
+<section class="slider">
+  <img id="slide" src="src/imagens/foto1.jpg">
+</section>
+
+<!-- NOTICIAS -->
+<section class="noticias">
+  <h2>Notícias</h2>
+
+  <div class="noticia-item">
+    <img src="imagens/">
+    <div class="texto">Texto da notícia aqui...</div>
+  </div>
+
+  <div class="noticia-item">
+    <img src="imagens/">
+    <div class="texto">Outra notícia aqui...</div>
+  </div>
+</section>
+
+<section class="info">
+  <h2>Fale Conosco</h2>
+
+  <div class="info-container">
+
+    <div class="info-card">
+      <div class="icon">📍</div>
+      <h3>Endereço</h3>
+      <a href="https://www.bing.com/search?pglt=299&q=R.+da+Floresta%2C+562+Amarante+S%C3%A3o+Gon%C3%A7alo+do+Amarante+-+RN&cvid=30e73fa18dd5496aa020d0a1eb3187b5&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIHCAEQ6wcYQNIBBzUwOGowajGoAgiwAgE&FORM=ANNTA1&PC=EDGEDB">R da Floresta, 562, Amarante, São Gonçalo do Amarante - RN, 59296-226</a>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">📮</div>
+      <h3>CEP</h3>
+      <p>59296-226</p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🧾</div>
+      <h3>CNPJ</h3>
+      <p>57.242.499/0001-60</p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">✉</div>
+      <h3>Email</h3>
+      <p>Assgar2019@gmail.com</p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">📞</div>
+      <h3>Telefone</h3>
+      <p>(84) 9 0000-0000</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+
+    <div class="footer-info">
+      © 2026 ASSGA <br>
+      Associação dos Servidores de São Gonçalo do Amarante
+    </div>
+
+    <div class="footer-redes">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

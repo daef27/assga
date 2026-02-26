@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h2>Cadastro de Responsável</h2>
+
+<input type="text" id="nome" placeholder="Nome">
+<input type="number" id="valor" placeholder="Valor">
+
+<select id="status">
+    <option value="Pendente">Pendente</option>
+    <option value="Pago">Pago</option>
+</select>
+
+<select id="ativo">
+    <option value="Ativo">Ativo</option>
+    <option value="Inativo">Inativo</option>
+</select>
+
+<button onclick="salvar()" class="btn-salvar">Salvar</button>
+<button onclick="window.location='lista.html'" class="btn-voltar">Ver Lista</button>
+
+</div>
+
+<script>
+function salvar() {
+    const nome = document.getElementById("nome").value;
+    const valor = document.getElementById("valor").value;
+    const status = document.getElementById("status").value;
+    const ativo = document.getElementById("ativo").value;
+
+    if (!nome || !valor) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    const lista = JSON.parse(localStorage.getItem("pagamentos")) || [];
+
+    lista.push({ nome, valor, status, ativo });
+
+    localStorage.setItem("pagamentos", JSON.stringify(lista));
+
+    alert("Cadastro salvo!");
+    window.location.href = "lista.html";
+}
+</script>
+
+</body>
+</html>

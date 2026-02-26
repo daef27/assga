@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Curso - ASSGA</title>
+<link rel="stylesheet" href="curso.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Cadastro de Curso</h1>
+    <p class="painel-link">
+      Registre-se e <a href="painelAdminCurso.html">veja no Painel Admin</a>
+    </p>
+  </div>
+
+  <div class="form-card">
+    <div class="input-group">
+      <input type="text" id="nome" placeholder="Nome completo">
+    </div>
+
+    <div class="input-group">
+      <input type="email" id="email" placeholder="Email">
+    </div>
+
+    <div class="input-group">
+      <select id="curso" onchange="atualizarValor()">
+        <option value="Básico de Libras" data-valor="150">Básico de Libras</option>
+        <option value="Intermediário de Libras" data-valor="250">Intermediário de Libras</option>
+      </select>
+    </div>
+
+    <div class="input-group valor-display">
+      Valor do curso: <span id="valorCurso">150</span> R$
+    </div>
+
+    <div class="input-group">
+      <button onclick="registrarCurso()">Registrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="curso.js"></script>
+</body>
+</html>

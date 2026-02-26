@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Departamento Esportivo - ASSGA</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#003366,#0059b3);
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+header{
+  text-align:center;
+  padding:20px;
+}
+
+.container{
+  flex:1;
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  padding:20px;
+  justify-content:center;
+}
+
+section{
+  background:#fff;
+  color:#333;
+  padding:20px;
+  border-radius:12px;
+  width:100%;
+  max-width:450px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2{
+  margin-bottom:15px;
+}
+
+input, select{
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+button{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  background:#003366;
+  color:#fff;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#0059b3;
+}
+
+.jogo-card{
+  background:#f4f4f4;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+
+.jogo-card small{
+  color:#666;
+}
+
+.jogo-card button{
+  background:red;
+  margin-top:5px;
+}
+
+.aviso{
+  text-align:center;
+  color:#999;
+  font-style:italic;
+}
+
+footer{
+  text-align:center;
+  padding:15px;
+  background:#002244;
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  .container{
+    flex-direction:column;
+    align-items:center;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Departamento Esportivo</h1>
+  <p>Cadastro e controle de jogos da ASSGA</p>
+</header>
+
+<div class="container">
+
+  <!-- FORMULÁRIO -->
+  <section>
+    <h2>Adicionar Novo Jogo</h2>
+
+    <input type="date" id="data">
+    <input type="time" id="hora">
+    <select id="tipo">
+      <option value="">Escolha o tipo</option>
+      <option value="Futsal">Futsal</option>
+      <option value="Futebol">Futebol</option>
+    </select>
+    <input type="text" id="adversario" placeholder="Nome do adversário">
+    <input type="text" id="local" placeholder="Local da partida">
+    <input type="text" id="placar" placeholder="Placar (Ex: 2x1)">
+
+    <button onclick="adicionarJogo()">Cadastrar Jogo</button>
+  </section>
+
+  <!-- LISTA -->
+  <section>
+    <h2>Lista de Jogos</h2>
+    <div id="listaJogos"></div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2026 ASSGA - Departamento Esportivo</p>
+</footer>
+
+<script>
+let jogos = JSON.parse(localStorage.getItem("jogosASSGA")) || [];
+
+function salvar(){
+  localStorage.setItem("jogosASSGA", JSON.stringify(jogos));
+}
+
+function adicionarJogo(){
+
+  const data = document.getElementById("data").value;
+  const hora = document.getElementById("hora").value;
+  const tipo = document.getElementById("tipo").value;
+  const adversario = document.getElementById("adversario").value;
+  const local = document.getElementById("local").value;
+  const placar = document.getElementById("placar").value;
+
+  if(!data || !hora || !tipo || !adversario || !local){
+    alert("Preencha todos os campos obrigatórios!");
+    return;
+  }
+
+  const novoJogo = {
+    data,
+    hora,
+    tipo,
+    adversario,
+    local,
+    placar
+  };
+
+  jogos.push(novoJogo);
+  salvar();
+  listarJogos();
+
+  document.querySelectorAll("input").forEach(input => input.value = "");
+  document.getElementById("tipo").value = "";
+}
+
+function listarJogos(){
+
+  const lista = document.getElementById("listaJogos");
+  lista.innerHTML = "";
+
+  if(jogos.length === 0){
+    lista.innerHTML = "<p class='aviso'>Nenhum jogo cadastrado ainda.</p>";
+    return;
+  }
+
+  jogos.forEach((jogo, index) => {
+    lista.innerHTML += `
+      <div class="jogo-card">
+        <strong>${jogo.tipo}</strong><br>
+        <small>${jogo.data} às ${jogo.hora}</small><br>
+        Adversário: ${jogo.adversario}<br>
+        Local: ${jogo.local}<br>
+        Placar: ${jogo.placar || "Ainda não informado"}<br>
+        <button onclick="excluirJogo(${index})">Excluir</button>
+      </div>
+    `;
+  });
+}
+
+function excluirJogo(index){
+  jogos.splice(index,1);
+  salvar();
+  listarJogos();
+}
+
+listarJogos();
+</script>
+
+</body>
+</html>

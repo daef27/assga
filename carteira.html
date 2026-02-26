@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Carteira do Cliente</title>
+<link rel="stylesheet" href="carteira.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+<h1>Carteira do Cliente</h1>
+
+<div class="carteira" id="carteira">
+
+  <img id="foto">
+  <h2 id="nome"></h2>
+  <p><strong>CPF:</strong> <span id="cpf"></span></p>
+  <p><strong>RG:</strong> <span id="rg"></span></p>
+  <p><strong>Sócio:</strong> <span id="socio"></span></p>
+
+</div>
+
+<button onclick="gerarPDF()">Gerar PDF</button>
+
+<script>
+const usuario = JSON.parse(localStorage.getItem("clienteLogado"));
+
+if(!usuario){
+  window.location.href = "login.html";
+}
+
+document.getElementById("foto").src = usuario.foto;
+document.getElementById("nome").innerText = usuario.nome;
+document.getElementById("cpf").innerText = usuario.cpf;
+document.getElementById("rg").innerText = usuario.rg;
+document.getElementById("socio").innerText = usuario.socio;
+
+function gerarPDF(){
+  const elemento = document.getElementById("carteira");
+  html2pdf().from(elemento).save("carteira.pdf");
+}
+</script>
+
+</body>
+</html>
